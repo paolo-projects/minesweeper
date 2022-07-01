@@ -4,8 +4,10 @@
     "description": "",
     "main": "src/index.js",
     "scripts": {
+        "prebuild": "npm test",
         "build": "tsc",
-        "test": "jest"
+        "test": "jest",
+	"preinstall": "npm run build"
     },
     "author": "",
     "license": "ISC",

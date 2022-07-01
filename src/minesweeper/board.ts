@@ -7,6 +7,11 @@ export interface BoardOptions {
 
 export type DisplayedCell = "unknown" | "bomb" | "empty" | number;
 export type TestResult = "safe" | "bomb" | "won";
+export type BoardEntry = {
+    row: number;
+    column: number;
+    value: DisplayedCell;
+};
 
 export default class Board {
     public size: number;
@@ -70,7 +75,6 @@ export default class Board {
             }
 
             this.bombs.set(bombRow, bombColumn, true);
-            console.log(this.neighboringBombs.data);
 
             this.neighboringBombs
                 .getCell(bombRow, bombColumn)
@@ -98,7 +102,6 @@ export default class Board {
             return "bomb";
         } else {
             this.updateDisplayed(this.neighboringBombs.getCell(row, column));
-            console.log(this.displayed.data);
 
             return this.didIWin() ? "won" : "safe";
         }
@@ -146,5 +149,17 @@ export default class Board {
 
     getBoard(): Matrix<DisplayedCell> {
         return this.displayed;
+    }
+
+    getBoardArray(): BoardEntry[] {
+        const result: BoardEntry[] = [];
+        this.displayed.forEach((value, row, column) => {
+            result.push({
+                row,
+                column,
+                value,
+            });
+        });
+        return result;
     }
 }
