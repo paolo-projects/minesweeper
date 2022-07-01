@@ -54,6 +54,12 @@ export default class Matrix<T> {
             }
         }
     }
+
+    static clone<E>(obj: Matrix<E>): Matrix<E> {
+        const result = new Matrix<E>(obj.size);
+        result.data = [...obj.data];
+        return result;
+    }
 }
 
 class MatrixCellIterator<T> implements Iterator<T> {
