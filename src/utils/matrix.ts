@@ -1,3 +1,5 @@
+import cloneDeep from "lodash.clonedeep";
+
 /**
  * @template T
  */
@@ -57,7 +59,7 @@ export default class Matrix<T> {
 
     static clone<E>(obj: Matrix<E>): Matrix<E> {
         const result = new Matrix<E>(obj.size);
-        result.data = [...obj.data];
+        result.data = cloneDeep(obj.data);
         return result;
     }
 }
