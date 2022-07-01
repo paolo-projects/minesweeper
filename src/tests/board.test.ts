@@ -7,7 +7,7 @@ test("Successfully create the board", () => {
     });
 
     for (const v of board.getBoard()) {
-        expect(v).toBe("unknown");
+        expect(v.value()).toBe("unknown");
     }
 });
 

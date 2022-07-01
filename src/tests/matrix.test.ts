@@ -36,3 +36,32 @@ test("Matrix cell neighbours should be correct", () => {
     expect(n).toContainEqual(m.getCell(2, 1));
     expect(n).toContainEqual(m.getCell(2, 2));
 });
+
+test("matrix iterator", () => {
+    const m = new Matrix<number>(3, 0);
+
+    const vals = [5, 10, 15, 1, 4, 7, 8, 23, 85];
+    // prettier-ignore
+    {
+    m.set(0, 0, vals[0]);     m.set(0, 1, vals[1]);    m.set(0, 2, vals[2]);
+    m.set(1, 0, vals[3]);     m.set(1, 1, vals[4]);     m.set(1, 2, vals[5]);
+    m.set(2, 0, vals[6]);     m.set(2, 1, vals[7]);    m.set(2, 2, vals[8]);
+    }
+
+    let i = 0;
+    for (const c of m) {
+        expect(c.value()).toBe(vals[i++]);
+    }
+});
+
+test("matrix clone", () => {
+    const m = new Matrix<number>(2, 0);
+    expect(m.get(0, 1)).toBe(0);
+
+    const m2 = Matrix.clone(m);
+    expect(m2.get(0, 1)).toBe(0);
+
+    m2.set(0, 1, 555);
+    expect(m2.get(0, 1)).toBe(555);
+    expect(m.get(0, 1)).toBe(0);
+});

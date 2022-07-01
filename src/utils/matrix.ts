@@ -45,7 +45,7 @@ export default class Matrix<T> {
         }
     }
 
-    [Symbol.iterator](): Iterator<T> {
+    [Symbol.iterator](): Iterator<MatrixCell<T>> {
         return new MatrixCellIterator(this);
     }
 
@@ -64,18 +64,23 @@ export default class Matrix<T> {
     }
 }
 
-class MatrixCellIterator<T> implements Iterator<T> {
+class MatrixCellIterator<T> implements Iterator<MatrixCell<T>> {
     i: number;
     constructor(private matrix: Matrix<T>) {
         this.i = 0;
     }
 
-    next(): IteratorResult<T> {
+    next(): IteratorResult<MatrixCell<T>> {
         if (this.i < this.matrix.data.length) {
-            return {
-                value: this.matrix.data[this.i++],
+            const value = {
+                value: this.matrix.getCell(
+                    Math.floor(this.i / this.matrix.size),
+                    this.i % this.matrix.size
+                ),
                 done: false,
             };
+            this.i++;
+            return value;
         } else {
             return {
                 value: null,
