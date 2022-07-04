@@ -9,7 +9,7 @@
         "test": "jest"
     },
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "devDependencies": {
         "@types/chai": "^4.3.1",
         "@types/jest": "^28.1.3",
