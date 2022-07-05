@@ -2,6 +2,16 @@
 
 An implementation of the logic of the minesweeper game.
 
+## Installation
+
+Install from the NPM registry:
+
+```sh
+npm i @paoloinfante/minesweeper
+```
+
+## Docs
+
 The game is built around the `Board` class. The contructor accepts an object with (for now) two options:
 
 ```typescript
