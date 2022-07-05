@@ -2,6 +2,10 @@
 
 An implementation of the logic of the minesweeper game.
 
+## Play
+
+You can find a React/Redux implementation in my repo here: [https://github.com/paolo-projects/minesweeper-react](https://github.com/paolo-projects/minesweeper-react). You can play it from here: [https://paolo-projects.github.io/minesweeper-react/](https://paolo-projects.github.io/minesweeper-react/)
+
 ## Installation
 
 Install from the NPM registry:
